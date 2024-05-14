@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CV Submission</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
+  <div class="container">
+    <!-- Company Name and Brand -->
+    <a class="navbar-brand" href="/">TalentMatchConnect</a>
+    <!-- Navbar Toggler (for mobile) -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/list_cvs">List</a>
+        </li>
+        <!-- Add a link for the search page -->
+        <li class="nav-item">
+          <a class="nav-link" href="/search">Search</a>
+        </li>
+      </ul>
+      <!-- Sign Up and Login Buttons -->
+      <div class="my-2 my-lg-0">
+        <a href="#" class="btn btn-outline-light mr-2">Sign Up</a>
+        <a href="#" class="btn btn-outline-light">Login</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+  <!-- CV Submission Form -->
+  <div class="container mt-4 ">
+    <!-- <h1>Submit CV</h1> -->
+    <h3> <b>Submit CV</b></h3> </BR>
+    <!-- Form goes here -->
+    <form action="/submit_cv" method="post" enctype="multipart/form-data">
+      <!-- Form fields -->
+      <div class="form-group ">
+        <label for="name"><B>Name</B></label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+      </div>
+      <div class="form-group">
+        <label for="email"><B>Email</B></label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+      </div>
+      <div class="form-group">
+        <label for="skills"><B>Skills</B></label>
+        <input type="text" class="form-control" id="skills" name="skills" placeholder="Skills (comma-separated)" required>
+      </div>
+      <!-- Add a field for uploading a picture -->
+      <div class="form-group">
+        <label for="photo"><B>Photo</B> </label>
+        <input type="file" class="form-control-file" id="photo" name="photo" accept="image/*">
+      </div>
+      <div class="form-group">
+        <label for="cv"><B>CV (JPEG/PDF)</B></label>
+        <input type="file" class="form-control-file" id="cv" name="cv" accept=".jpg,.jpeg,.pdf" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+<!-- Footer -->
+<footer class="footer mt-auto py-3 bg-dark">
+  <div class="container text-center">
+    <span class="text-muted">@ COPYRIGHT &copy; Alpha1 Pvt Ltd</span>
+    <a href="/"><i class="fab fa-linkedin ml-3 text-light"></i></a>
+    <a href="/"><i class="fab fa-instagram ml-3 text-light"></i></a>
+    <a href="/"><i class="fab fa-twitter ml-3 text-light"></i></a>
+  </div>
+</footer>
+
+<!-- Bootstrap JS (Optional, if you need Bootstrap JavaScript features) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

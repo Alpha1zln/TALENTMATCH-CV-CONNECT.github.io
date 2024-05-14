@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search CVs</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
+  <div class="container">
+    <!-- Company Name and Brand -->
+    <a class="navbar-brand" href="/">TalentMatchConnect </a>
+    <!-- Navbar Toggler (for mobile) -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/list_cvs">List</a>
+        </li>
+        <!-- Add a link back to the main page -->
+        <li class="nav-item">
+          <a class="nav-link" href="/">Search</a> 
+        </li>
+      </ul>
+      <!-- Sign Up and Login Buttons -->
+      <div class="my-2 my-lg-0">
+        <a href="#" class="btn btn-outline-light mr-2">Sign Up</a>
+        <a href="#" class="btn btn-outline-light">Login</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Search Form -->
+<div class="container mt-4 mb-2">
+  <h3> <b>Search CVs</b></h3> 
+ <hr>  
+ <!-- <h4>Enter Skill to find the Right Candidates </h4> -->
+  <form id="searchForm">
+    <label for="skillsInput" > <b>ENTER SKILL </b> </label>
+    <input type="text" id="skillsInput" style="width: 25%; height: 10%; margin-left: 1%;"  placeholder="Enter skills (comma-separated)">
+    <button type="submit" class="btn btn-primary ml-3 mt-2 mb-2" >Search</button>
+  </form>
+  <hr>   
+</div>
+
+<!-- Search Results -->
+<div class="container mt-4" id="searchResults"></div>
+
+<!-- Footer -->
+<footer class="footer mt-auto py-3 bg-dark">
+  <div class="container text-center">
+    <span class="text-muted">@ COPYRIGHT &copy; Alpha1 Pvt Ltd</span>
+    <a href="/"><i class="fab fa-linkedin ml-3 text-light"></i></a>
+    <a href="/"><i class="fab fa-instagram ml-3 text-light"></i></a>
+    <a href="/"><i class="fab fa-twitter ml-3 text-light"></i></a>
+  </div>
+</footer>
+
+<!-- Bootstrap JS (Optional, if you need Bootstrap JavaScript features) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  // Add event listener for form submission
+  document.getElementById('searchForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+    searchCvs(); // Call the searchCvs function to perform the search
+  });
+
+  function searchCvs() {
+    const skills = document.getElementById('skillsInput').value;
+
+    // Make an AJAX request to the /search_cvs route
+    fetch(`/search_cvs?skills=${skills}`)
+      .then(response => response.json())
+      .then(cvs => {
+        // Handle the search results (display them on the page, etc.)
+        console.log(cvs); // Log the results to console for debugging (optional)
+        displaySearchResults(cvs); // Call function to display search results
+      })
+      .catch(error => {
+        console.error('Error searching CVs:', error);
+      });
+  }
+
+  
+
+  function displaySearchResults(cvs) {
+  // Clear previous search results if any
+  document.getElementById('searchResults').innerHTML = '';
+
+  // Loop through the search results and display them on the page
+  for (let i = 0; i < cvs.length; i += 2) {
+    // Create a row for two students' details
+    const rowElement = document.createElement('div');
+    rowElement.classList.add('row');
+
+    // Create columns for each student
+    for (let j = i; j < i + 2 && j < cvs.length; j++) {
+      const cv = cvs[j];
+      const columnElement = document.createElement('div');
+      columnElement.classList.add('col');
+
+      // Create HTML for student details
+      const cvHtml = `
+        <div class="cv">
+          <h2>${cv.name}</h2>
+          <p>Email: ${cv.email}</p>
+          <p>Skills: ${cv.skills.join(', ')}</p>
+          <!-- Concatenate the photo path with the string -->
+          <img src="/uploads/photo/${cv.photo}" class="card-img-top"  style="max-width: 200px; height: auto;" alt="CV Photo">
+          <!-- Add a download button to download CV -->
+          <a href="/uploads/cv/${cv.cv}" class="btn btn-primary mt-2">Download CV</a>
+        </div>
+      `;
+
+      // Append student details to column
+      columnElement.innerHTML = cvHtml;
+      rowElement.appendChild(columnElement);
+    }
+
+    // Append row to search results
+    document.getElementById('searchResults').appendChild(rowElement);
+  }
+}
+
+
+
+</script>
+
+</body>
+</html>

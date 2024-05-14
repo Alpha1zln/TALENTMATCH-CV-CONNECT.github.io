@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List of CVs</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
+  <div class="container">
+    <!-- Company Name and Brand -->
+    <a class="navbar-brand" href="/">TalentMatchConnect</a>
+    <!-- Navbar Toggler (for mobile) -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/list_cvs">List</a>
+        </li>
+        <!-- Add a link back to the main page -->
+        <li class="nav-item">
+          <a class="nav-link" href="/">Search</a>
+        </li>
+      </ul>
+      <!-- Sign Up and Login Buttons -->
+      <div class="my-2 my-lg-0">
+        <a href="#" class="btn btn-outline-light mr-2">Sign Up</a>
+        <a href="#" class="btn btn-outline-light">Login</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <!-- <h1>List of CVs</h1> -->
+  <h3> <b>List of CVs</b></h3> </BR>
+  <div class="row">
+    <% cvs.forEach(cv => { %>
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title"><%= cv.name %></h5>
+            <p class="card-text"><strong>Email:</strong> <%= cv.email %></p>
+            <p class="card-text"><strong>Skills:</strong> <%= cv.skills.join(', ') %></p>
+            <img src="/uploads/photo/<%= cv.photo %>" class="card-img-top" style="max-width: 100px; height: auto;" alt="CV Photo">
+            <a href="/uploads/cv/<%= cv.cv %>" class="btn btn-primary mt-2">Download CV</a>
+          </div>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer mt-auto py-3 bg-dark">
+  <div class="container text-center">
+    <span class="text-muted">@ COPYRIGHT &copy; Alpha1 Pvt Ltd</span>
+    <a href="/"><i class="fab fa-linkedin ml-3 text-light"></i></a>
+    <a href="/"><i class="fab fa-instagram ml-3 text-light"></i></a>
+    <a href="/"><i class="fab fa-twitter ml-3 text-light"></i></a>
+  </div>
+</footer>
+
+</body>
+</html>
