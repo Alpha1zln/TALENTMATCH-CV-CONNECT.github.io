@@ -1,0 +1,54 @@
+body {
+  padding-bottom: 70px; /* Adjust to accommodate footer height */
+}
+
+.navbar-nav .nav-link {
+  font-size: 18px; /* Adjust the font size as needed */
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  font-weight: bold; /* Make header elements bold */
+}
+
+footer.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 70px; /* Adjust according to footer height */
+  line-height: 70px; /* Center content vertically */
+  background-color: #343a40; /* Dark background color */
+  color: #fff; /* Text color */
+}
+
+.footer a {
+  color: #fff; /* Link color */
+}
+
+.footer a:hover {
+  color: #f8f9fa; /* Hover color */
+}
+
+
+
+.cv {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.cv h2 {
+  margin-top: 0;
+}
+
+.cv p {
+  margin: 5px 0;
+}
+
+.cv img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 10px;
+}
